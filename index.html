@@ -12,6 +12,7 @@
             color: #333;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s, color 0.3s;
         }
         header {
             background-color: #007acc;
@@ -30,6 +31,7 @@
             font-size: 1.5rem;
             font-weight: bold;
             color: #007acc;
+            transition: transform 0.3s;
         }
         button {
             padding: 10px 20px;
@@ -50,6 +52,27 @@
             padding: 10px;
             margin-top: 30px;
         }
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .dark-mode header {
+            background-color: #1e88e5;
+        }
+        .dark-mode .excuse {
+            color: #90caf9;
+        }
+        #add-excuse-container {
+            margin-top: 20px;
+        }
+        #add-excuse-container input {
+            padding: 10px;
+            font-size: 1rem;
+            width: 70%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
     <script>
         const excuses = [
@@ -63,7 +86,25 @@
 
         function generateExcuse() {
             const excuse = excuses[Math.floor(Math.random() * excuses.length)];
-            document.getElementById("excuse").innerText = excuse;
+            const excuseElement = document.getElementById("excuse");
+            excuseElement.innerText = excuse;
+            excuseElement.style.transform = "scale(1.2)";
+            setTimeout(() => excuseElement.style.transform = "scale(1)", 300);
+        }
+
+        function addExcuse() {
+            const newExcuse = document.getElementById("new-excuse").value.trim();
+            if (newExcuse) {
+                excuses.push(newExcuse);
+                document.getElementById("new-excuse").value = "";
+                alert("Excusa añadida correctamente.");
+            } else {
+                alert("Por favor, escribe una excusa válida.");
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
         }
     </script>
 </head>
@@ -75,6 +116,11 @@
     <main>
         <div class="excuse" id="excuse">Haz clic en el botón para generar una excusa.</div>
         <button onclick="generateExcuse()">Generar Excusa</button>
+        <div id="add-excuse-container">
+            <input type="text" id="new-excuse" placeholder="Escribe tu excusa aquí...">
+            <button onclick="addExcuse()">Añadir Excusa</button>
+        </div>
+        <button onclick="toggleDarkMode()">Alternar Modo Oscuro</button>
     </main>
     <footer>
         <p>&copy; 2024 La Fábrica de Excusas. ¡Es tu culpa si no funciona! 😉</p>
