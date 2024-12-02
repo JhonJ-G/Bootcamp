@@ -3,9 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce</title>
+    <title>La Página de las Excusas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+        .excuse {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #005a9c;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+        const excuses = [
+            "Mi perro se comió el código.",
+            "¡El Wi-Fi se cayó en toda la galaxia!",
+            "Estaba programando, pero me quedé dormido en el teclado.",
+            "¡Lo juro, funcionaba en mi máquina!",
+            "La abuela necesitaba ayuda con su Instagram.",
+            "Me lo robaron... ¡pero era un bug!"
+        ];
+
+        function generateExcuse() {
+            const excuse = excuses[Math.floor(Math.random() * excuses.length)];
+            document.getElementById("excuse").innerText = excuse;
+        }
+    </script>
 </head>
 <body>
-    <h1>monda por su culo</h1>
+    <header>
+        <h1>La Página de las Excusas</h1>
+        <p>¿Olvidaste hacer algo? ¡Aquí tienes una excusa!</p>
+    </header>
+    <main>
+        <div class="excuse" id="excuse">Haz clic en el botón para generar una excusa.</div>
+        <button onclick="generateExcuse()">Generar Excusa</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 La Fábrica de Excusas. ¡Es tu culpa si no funciona! 😉</p>
+    </footer>
 </body>
 </html>
